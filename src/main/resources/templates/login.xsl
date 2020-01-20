@@ -13,6 +13,29 @@
 		<HTML lang="zh-TW">
 			<HEAD>
 				<TITLE>會員登入</TITLE>
+				<script type="text/javascript">
+					var verifyCallback = function(response) {
+					alert(response);
+					};
+					var widgetId1;
+					var widgetId2;
+					var onloadCallback = function() {
+					// Renders the HTML element with id 'example1' as a reCAPTCHA widget.
+					// The id of the reCAPTCHA widget is assigned to 'widgetId1'.
+					widgetId1 = grecaptcha.render('example1', {
+					'sitekey' : '6LeC6tAUAAAAALe40E10eHU5Yo72LU_BvZ3QnslZ',
+					'theme' : 'light'
+					});
+					widgetId2 = grecaptcha.render(document.getElementById('example2'), {
+					'sitekey' : '6LeC6tAUAAAAALe40E10eHU5Yo72LU_BvZ3QnslZ'
+					});
+					grecaptcha.render('example3', {
+					'sitekey' : '6LeC6tAUAAAAALe40E10eHU5Yo72LU_BvZ3QnslZ',
+					'callback' : verifyCallback,
+					'theme' : 'dark'
+					});
+					};
+				</script>
 				<SCRIPT src="https://www.google.com/recaptcha/api.js"/>
 			</HEAD>
 			<BODY>
@@ -23,6 +46,7 @@
 
 	<xsl:template match="document">
 		<FORM class="from" action="" method="POST">
+			<DIV id="example1"></DIV>
 			<DIV class="form-group">
 				<LABEL for="username">帳號：</LABEL>
 				<INPUT type="text" class="form-control" name="username" id="username" />
@@ -39,6 +63,42 @@
 			<BUTTON type="submit" class="btn btn-primary">送出</BUTTON>
 			<DIV class="g-recaptcha" data-sitekey="6LeC6tAUAAAAALe40E10eHU5Yo72LU_BvZ3QnslZ"></DIV>
 		</FORM>
-		<SCRIPT src="/SCRIPT/loggin.js"/>
+		<FORM class="from" action="" method="POST">
+			<DIV id="example2"></DIV>
+			<DIV class="form-group">
+				<LABEL for="username">帳號：</LABEL>
+				<INPUT type="text" class="form-control" name="username" id="username" />
+			</DIV>
+			<DIV class="form-group">
+				<LABEL for="password">密碼：</LABEL>
+				<INPUT type="password" class="form-control" name="password" id="password" />
+			</DIV>
+			<DIV class="form-group">
+				<INPUT type="checkbox" name="remember" id="remember"/>
+				<LABEL for="remember">記住我</LABEL>
+			</DIV>
+			
+			<BUTTON type="submit" class="btn btn-primary">送出</BUTTON>
+			<DIV class="g-recaptcha" data-sitekey="6LeC6tAUAAAAALe40E10eHU5Yo72LU_BvZ3QnslZ"></DIV>
+		</FORM>
+		<FORM class="from" action="" method="POST">
+			<DIV id="example3"></DIV>
+			<DIV class="form-group">
+				<LABEL for="username">帳號：</LABEL>
+				<INPUT type="text" class="form-control" name="username" id="username" />
+			</DIV>
+			<DIV class="form-group">
+				<LABEL for="password">密碼：</LABEL>
+				<INPUT type="password" class="form-control" name="password" id="password" />
+			</DIV>
+			<DIV class="form-group">
+				<INPUT type="checkbox" name="remember" id="remember"/>
+				<LABEL for="remember">記住我</LABEL>
+			</DIV>
+			
+			<BUTTON type="submit" class="btn btn-primary">送出</BUTTON>
+			<DIV class="g-recaptcha" data-sitekey="6LeC6tAUAAAAALe40E10eHU5Yo72LU_BvZ3QnslZ"></DIV>
+		</FORM>
+		<SCRIPT src="static1/SCRIPT/loggin.js"/>
 	</xsl:template>
 </xsl:stylesheet>
