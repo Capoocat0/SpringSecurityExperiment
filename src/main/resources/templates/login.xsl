@@ -13,6 +13,7 @@
 		<HTML lang="zh-TW">
 			<HEAD>
 				<TITLE>會員登入</TITLE>
+				<SCRIPT src="https://www.google.com/recaptcha/api.js"/>
 			</HEAD>
 			<BODY>
 				<xsl:apply-templates select="document"/>
@@ -36,6 +37,8 @@
 			</DIV>
 			
 			<BUTTON type="submit" class="btn btn-primary">送出</BUTTON>
+			<DIV class="g-recaptcha" data-sitekey="6LeC6tAUAAAAALe40E10eHU5Yo72LU_BvZ3QnslZ"></DIV>
 		</FORM>
+		<SCRIPT src="/SCRIPT/loggin.js"/>
 	</xsl:template>
 </xsl:stylesheet>

@@ -82,3 +82,51 @@ COMMENT ON COLUMN"acl_entry"."granting"IS'是否授權';
 COMMENT ON COLUMN"acl_entry"."audit_success"IS'審計目的';
 COMMENT ON COLUMN"acl_entry"."audit_failure"IS'審計目的';
 COMMENT ON TABLE"acl_entry"IS'權限分配';
+
+CREATE TABLE user_account(
+    "id"serial8 PRIMARY KEY,
+    "fullname"VARCHAR NOT NULL,
+    "email"VARCHAR NOT NULL,
+    "shadow"VARCHAR NOT NULL,
+    "enabled"BOOLEAN NOT NULL
+);
+COMMENT ON COLUMN"user_account"."id"IS'主鍵';
+COMMENT ON COLUMN"user_account"."fullname"IS'全名';
+COMMENT ON COLUMN"user_account"."email"IS'帳號';
+COMMENT ON COLUMN"user_account"."shadow"IS'密碼';
+COMMENT ON COLUMN"user_account"."enabled"IS'啟動';
+COMMENT ON TABLE"user_account"IS'帳號密碼';
+
+CREATE TABLE role(
+    "id"serial8 PRIMARY KEY,
+    "displayName"VARCHAR UNIQUE
+);
+COMMENT ON COLUMN"role"."id"IS'主鍵';
+COMMENT ON COLUMN"role"."displayName"IS'全名';
+COMMENT ON TABLE"role"IS'身分';
+
+CREATE TABLE privilege(
+    "id"serial8 PRIMARY KEY,
+    "displayName"VARCHAR UNIQUE
+);
+COMMENT ON COLUMN"privilege"."id"IS'主鍵';
+COMMENT ON COLUMN"privilege"."displayName"IS'名稱';
+COMMENT ON TABLE"privilege"IS'權限';
+
+CREATE TABLE users_roles(
+    "user_id"int8 REFERENCES"user_account"("id")ON UPDATE CASCADE ON DELETE RESTRICT,
+    "role_id"int8 REFERENCES"role"("id")ON UPDATE CASCADE ON DELETE RESTRICT,
+    PRIMARY KEY("user_id","role_id")
+);
+COMMENT ON COLUMN"users_roles"."id"IS'主鍵';
+COMMENT ON COLUMN"users_roles"."displayName"IS'名稱';
+COMMENT ON TABLE"users_roles"IS'權限';
+
+CREATE TABLE roles_privileges(
+    "role_id"int8 REFERENCES"role"("id")ON UPDATE CASCADE ON DELETE RESTRICT,
+    "privilege_id"int8 REFERENCES"privilege"("id")ON UPDATE CASCADE ON DELETE RESTRICT,
+    PRIMARY KEY("role_id","privilege_id")
+);
+COMMENT ON COLUMN"roles_privileges"."id"IS'主鍵';
+COMMENT ON COLUMN"roles_privileges"."displayName"IS'名稱';
+COMMENT ON TABLE"roles_privileges"IS'權限';
