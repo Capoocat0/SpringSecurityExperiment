@@ -46,20 +46,6 @@
 				<INPUT type="checkbox" name="remember" id="remember"/>
 				<LABEL for="remember">記住我</LABEL>
 			</DIV>
-			<SCRIPT>function get_action(form) {
-
-				var v = grecaptcha.getResponse();
-				if(v.length == 0)
-				{
-				document.getElementById('captcha').innerHTML="You can't leave Captcha Code empty";
-				return false;
-				}
-				if(v.length != 0)
-				{
-				document.getElementById('captcha').innerHTML="Captcha completed";
-				return true; 
-				}
-				}</SCRIPT>
 			<BUTTON id="submit" type="submit" class="btn btn-primary">送出</BUTTON>
 			<DIV id="wtf" data-sitekey="6LeC6tAUAAAAALe40E10eHU5Yo72LU_BvZ3QnslZ"></DIV>
 			<span id="captcha" style="margin-left:100px;color:red" />
