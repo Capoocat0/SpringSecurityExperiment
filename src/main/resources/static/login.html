@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<HTML lang="zh-TW">
+	<HEAD>
+		<META charset="UTF-8"/>
+		<SCRIPT>
+			var onloadCallback = function () {
+				widgetId = grecaptcha.render('wtf', {
+					'sitekey': '6LeC6tAUAAAAALe40E10eHU5Yo72LU_BvZ3QnslZ'
+				});
+			};
+		</SCRIPT>
+		<TITLE>reCAPTCHA</TITLE>
+	</HEAD>
+	<BODY>
+		<FORM action="" class="fom" method="post">
+			<DIV class="form-group">
+				<LABEL for="username">帳號：</LABEL>
+				<INPUT class="form-control" id="username" name="username" type="text"/>
+			</DIV>
+			<DIV class="form-group">
+				<LABEL for="password">密碼：</LABEL>
+				<INPUT class="form-control" id="password" name="password" type="password"/>
+			</DIV>
+			<DIV class="form-group">
+				<INPUT id="remember" name="remember" type="checkbox"/>
+				<LABEL for="remember">記住我</LABEL>
+			</DIV>
+			<BUTTON class="btn btn-primary" type="submit">送出</BUTTON>
+			<DIV id="wtf" data-sitekey="6LeC6tAUAAAAALe40E10eHU5Yo72LU_BvZ3QnslZ"></DIV>
+		</FORM>
+		<SCRIPT async="" defer="" src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&amp;render=explicit"></SCRIPT>
+	</BODY>
+</HTML>
